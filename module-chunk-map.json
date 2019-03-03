@@ -1,0 +1,19 @@
+{
+    "./src/bar.js": 0,
+    "./src/foo.js": 1,
+    "./src/app.js": "index",
+    "./src/index.js": "index",
+    "./src/sandbox.js": "sandbox",
+    "./node_modules/object-assign/index.js": "vendors~index~sandbox",
+    "./node_modules/prop-types/checkPropTypes.js": "vendors~index~sandbox",
+    "./node_modules/prop-types/lib/ReactPropTypesSecret.js": "vendors~index~sandbox",
+    "./node_modules/react-dom/cjs/react-dom.development.js": "vendors~index~sandbox",
+    "./node_modules/react-dom/index.js": "vendors~index~sandbox",
+    "./node_modules/react/cjs/react.development.js": "vendors~index~sandbox",
+    "./node_modules/react/index.js": "vendors~index~sandbox",
+    "./node_modules/scheduler/cjs/scheduler-tracing.development.js": "vendors~index~sandbox",
+    "./node_modules/scheduler/cjs/scheduler.development.js": "vendors~index~sandbox",
+    "./node_modules/scheduler/index.js": "vendors~index~sandbox",
+    "./node_modules/scheduler/tracing.js": "vendors~index~sandbox",
+    "./node_modules/webpack/buildin/global.js": "vendors~index~sandbox"
+}
