@@ -1,5 +1,5 @@
 const path = require("path");
-const ModuleChunkMapPlugin = require("./module-chunk-map-plugin.js");
+const ModuleChunkDepsPlugin = require("./module-chunk-deps-plugin.js");
 
 module.exports = {
     mode: "development",
@@ -43,7 +43,7 @@ module.exports = {
         },
     },
     plugins: [
-        new ModuleChunkMapPlugin(),
+        new ModuleChunkDepsPlugin(),
     ],
     devtool: "source-map",
 };

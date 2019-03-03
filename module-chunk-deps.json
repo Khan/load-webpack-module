@@ -1,0 +1,44 @@
+{
+    "chunkMap": {
+        "./src/baz.js": 0,
+        "./src/bar.js": 1,
+        "./src/foo.js": 2,
+        "./src/app.js": "index",
+        "./src/index.js": "index",
+        "./src/module-loader.js": "sandbox",
+        "./src/sandbox.js": "sandbox",
+        "./node_modules/object-assign/index.js": "vendors~index~sandbox",
+        "./node_modules/prop-types/checkPropTypes.js": "vendors~index~sandbox",
+        "./node_modules/prop-types/lib/ReactPropTypesSecret.js": "vendors~index~sandbox",
+        "./node_modules/react-dom/cjs/react-dom.development.js": "vendors~index~sandbox",
+        "./node_modules/react-dom/index.js": "vendors~index~sandbox",
+        "./node_modules/react/cjs/react.development.js": "vendors~index~sandbox",
+        "./node_modules/react/index.js": "vendors~index~sandbox",
+        "./node_modules/scheduler/cjs/scheduler-tracing.development.js": "vendors~index~sandbox",
+        "./node_modules/scheduler/cjs/scheduler.development.js": "vendors~index~sandbox",
+        "./node_modules/scheduler/index.js": "vendors~index~sandbox",
+        "./node_modules/scheduler/tracing.js": "vendors~index~sandbox",
+        "./node_modules/webpack/buildin/global.js": "vendors~index~sandbox"
+    },
+    "chunkDeps": {
+        "0": [
+            "vendors~index~sandbox"
+        ],
+        "1": [
+            0,
+            "vendors~index~sandbox"
+        ],
+        "2": [
+            0,
+            "vendors~index~sandbox"
+        ],
+        "index": [
+            1,
+            2,
+            "vendors~index~sandbox"
+        ],
+        "sandbox": [
+            "vendors~index~sandbox"
+        ]
+    }
+}

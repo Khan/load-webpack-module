@@ -1,9 +1,10 @@
 import * as React from "react";
+import Baz from "./baz.js";
 
 export default class Foo extends React.Component {
     render() {
-        return <div>
+        return <Baz color="plum">
             Foo
-        </div>;
+        </Baz>;
     }
 }

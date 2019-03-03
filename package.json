@@ -1,5 +1,5 @@
 {
-  "name": "runtime-require",
+  "name": "load-webpack-module",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",

@@ -1,10 +1,11 @@
 const React = require("react");
+const Baz = require("./baz.js").default;
 
 class Bar extends React.Component {
     render() {
-        return <div>
+        return <Baz color="orange">
             Bar
-        </div>;
+        </Baz>;
     }
 }
 

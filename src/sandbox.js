@@ -1,34 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+import {createLoadModuleFn} from "./module-loader.js";
+
 // Prevents entry points from rendering when loading entry bundles
 // in the sandbox.  The sandbox loads bundles for access to the
 // modules they contain and we don't actually want them to render
 // anything in this situation.
 window.__Sandbox__ = true;
-
-const init = () => 
-    fetch("/module-chunk-map.json")
-        .then(res => res.json())
-        .then(chunkMap => {
-            const require = (moduleId) => {
-                return new Promise((resolve, reject) => {
-                    if (moduleId in chunkMap) {
-                        const chunkId = chunkMap[moduleId];
-                        __webpack_chunk_load__(chunkId).then(promises => {
-                            resolve(__webpack_require__(moduleId));
-                        });
-                    } else {
-                        reject(`${moduleId} not found`);
-                    }
-                });
-            };
-            return require;
-        });
-
-init().then(require => {
-    window.require = require;
-});
 
 const container = document.querySelector("#container");
 // TODO: generate this list based on fixture tests
@@ -43,15 +22,26 @@ class Sandbox extends React.Component {
         super(props);
         this.state = {
             Component: null,
+            loadModule: null,
         };
+    }
+
+    componentDidMount() {
+        createLoadModuleFn("/module-chunk-deps.json").then(loadModule => {
+            this.setState({loadModule});
+            // export global for debugging purposes
+            window.loadModule = loadModule;
+        });
     }
 
     handleChange = (e) => {
         const index = e.currentTarget.selectedIndex;
-        if (index > 0) {
+        const {loadModule} = this.state;
+
+        if (index > 0 && !!loadModule) {
             const moduleId = modules[index - 1];
             console.log(`loading ${moduleId}`);
-            window.require(moduleId).then(m => {
+            loadModule(moduleId).then(m => {
                 if (m.__esModule) {
                     this.setState({Component: m.default});
                     console.log(`${moduleId} loaded`);
@@ -64,10 +54,10 @@ class Sandbox extends React.Component {
     }
 
     render() {
-        const {Component} = this.state;
+        const {Component, loadModule} = this.state;
         return <div>
             <h1>Sandbox</h1>
-            <select onChange={this.handleChange}>
+            <select onChange={this.handleChange} disabled={!loadModule}>
                 <option>Select a value</option>
                 {modules.map(m =>
                     <option key={m} value={m}>{m}</option>)}
