@@ -1,5 +1,6 @@
 const path = require("path");
 const ModuleChunkDepsPlugin = require("./module-chunk-deps-plugin.js");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: "development",
@@ -43,6 +44,18 @@ module.exports = {
         },
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Index',
+            chunks: ['runtime', 'vendors~index~sandbox', 'vendors~index', 'index~sandbox', 'index'],
+            inject: 'body',
+            filename: 'index.html'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Sandbox',
+            chunks: ['runtime', 'vendors~index~sandbox', 'index~sandbox', 'sandbox'],
+            inject: 'body',
+            filename: 'sandbox.html'
+        }),
         new ModuleChunkDepsPlugin(),
     ],
     devtool: "source-map",

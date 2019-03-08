@@ -5,7 +5,8 @@ import App from "./app.js";
 
 window.Require = __webpack_require__;
 
-const container = document.querySelector("#container");
+const container = document.createElement("div");
+document.body.appendChild(container);
 
 if (!window.__Sandbox__) {
     ReactDOM.render(<App/>, container);

@@ -1,12 +1,13 @@
 const React = require("react");
+const {hot} = require("react-hot-loader/root.js");
 const Baz = require("./baz.js").default;
 
 class Bar extends React.Component {
     render() {
         return <Baz color="orange">
-            Bar
+            Bar!!
         </Baz>;
     }
 }
 
-module.exports = Bar;
+module.exports = hot(Bar);

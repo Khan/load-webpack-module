@@ -11,7 +11,19 @@ const _computeDeps = (chunk, chunkDeps) => {
 
 // Return an array of chunks that depend on `chunk` including `chunk` itself.
 const computeDeps = (chunk, chunkDeps) => {
-    const deps = new Set(_computeDeps(chunk, chunkDeps));
+    const deps = new Set();
+
+    const _computeDeps = (chunk) => {
+        if (deps.has(chunk)) {
+            return;
+        } else {
+            deps.add(chunk);
+            chunkDeps[chunk].forEach(_computeDeps);
+        }
+    };
+
+    _computeDeps(chunk)
+
     return [...deps];
 }
 

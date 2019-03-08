@@ -8,6 +8,6 @@ bundles will be created.
 # Quick Start
 
 - yarn
-- yarn watch
-- yarn serve (in another terminal)
-- open http://localhost:8080/sandbox.html
+- yarn start
+- open http://localhost:8080/dist/sandbox.html
+- open http://localhost:8080/dist/index.html

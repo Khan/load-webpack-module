@@ -11,9 +11,12 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
+    "react-hot-loader": "^4.8.0",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
     "react": "^16.8.3",
@@ -22,6 +25,6 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
-    "serve": "http-server ."
+    "start": "webpack-dev-server --hot"
   }
 }

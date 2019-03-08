@@ -1,6 +1,7 @@
 import * as React from "react";
+import {hot} from "react-hot-loader/root.js";
 
-export default class Baz extends React.Component {
+class Baz extends React.Component {
     render() {
         const style = {
             color: this.props.color, 
@@ -12,3 +13,5 @@ export default class Baz extends React.Component {
         </div>
     }
 }
+
+export default hot(Baz);

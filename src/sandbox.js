@@ -9,7 +9,9 @@ import {createLoadModuleFn} from "./module-loader.js";
 // anything in this situation.
 window.__Sandbox__ = true;
 
-const container = document.querySelector("#container");
+const container = document.createElement("div");
+document.body.appendChild(container);
+
 // TODO: generate this list based on fixture tests
 const modules = [
     "./src/app.js",
