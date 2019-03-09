@@ -10,7 +10,6 @@
         "./node_modules/webpack/hot sync ^\\.\\/log$": "index~sandbox",
         "./src/module-loader.js": "sandbox",
         "./src/sandbox.js": "sandbox",
-        "./node_modules/react-hot-loader/root.js": "vendors~index",
         "./node_modules/ansi-html/index.js": "vendors~index~sandbox",
         "./node_modules/ansi-regex/index.js": "vendors~index~sandbox",
         "./node_modules/events/events.js": "vendors~index~sandbox",
@@ -136,6 +135,7 @@
         "./node_modules/react-is/cjs/react-is.development.js": "vendors~index~sandbox",
         "./node_modules/react-is/index.js": "vendors~index~sandbox",
         "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js": "vendors~index~sandbox",
+        "./node_modules/react-loadable/lib/index.js": "vendors~index~sandbox",
         "./node_modules/react/cjs/react.development.js": "vendors~index~sandbox",
         "./node_modules/react/index.js": "vendors~index~sandbox",
         "./node_modules/scheduler/cjs/scheduler-tracing.development.js": "vendors~index~sandbox",
@@ -147,7 +147,7 @@
         "./node_modules/strip-ansi/index.js": "vendors~index~sandbox",
         "./node_modules/url/url.js": "vendors~index~sandbox",
         "./node_modules/url/util.js": "vendors~index~sandbox",
-        "./node_modules/webpack-dev-server/client/index.js?http://localhost:8085": "vendors~index~sandbox",
+        "./node_modules/webpack-dev-server/client/index.js?http://localhost:8080": "vendors~index~sandbox",
         "./node_modules/webpack-dev-server/client/overlay.js": "vendors~index~sandbox",
         "./node_modules/webpack-dev-server/client/socket.js": "vendors~index~sandbox",
         "./node_modules/webpack/buildin/amd-define.js": "vendors~index~sandbox",
@@ -161,32 +161,25 @@
     },
     "chunkDeps": {
         "0": [
-            "vendors~index",
             "vendors~index~sandbox"
         ],
         "1": [
             0,
-            "vendors~index",
             "vendors~index~sandbox"
         ],
         "2": [
             0,
-            "vendors~index",
             "vendors~index~sandbox"
         ],
         "index": [
             1,
             2,
-            "vendors~index",
             "vendors~index~sandbox"
         ],
         "vendors~index~sandbox": [
             "index~sandbox"
         ],
         "sandbox": [
-            "vendors~index~sandbox"
-        ],
-        "vendors~index": [
             "vendors~index~sandbox"
         ],
         "index~sandbox": [

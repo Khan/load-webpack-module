@@ -1,6 +1,5 @@
 import * as React from "react";
 import Baz from "./baz.js";
-import {hot} from "react-hot-loader/root.js";
 
 class Foo extends React.Component {
     render() {
@@ -10,4 +9,6 @@ class Foo extends React.Component {
     }
 }
 
-export default hot(Foo);
+export default Foo;
+
+if (module.hot && window.__Sandbox__) module.hot.accept();

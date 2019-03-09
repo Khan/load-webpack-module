@@ -1,13 +1,38 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-
+// react-hot-loader doesn't know how to patch:
+// import * as React from "react";
+// import * as ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import { AppContainer } from "react-hot-loader";
 import App from "./app.js";
+import Loadable from "react-loadable";
 
 window.Require = __webpack_require__;
 
-const container = document.createElement("div");
-document.body.appendChild(container);
-
 if (!window.__Sandbox__) {
-    ReactDOM.render(<App/>, container);
+    const container = document.querySelector("#container") || document.createElement("div");
+    container.id = "container";
+    document.body.appendChild(container);
+
+    const render = Component => {
+        ReactDOM.render(
+            <AppContainer>
+                <Component />
+            </AppContainer>,
+            container,
+        );
+    }
+      
+    render(App)
+
+    if (module.hot) {
+        module.hot.accept("./app.js", () => {
+            const App = require("./app.js").default;
+            // wait until all async components are loaded before rendering
+            Loadable.preloadAll().then(() => {
+                console.log("re-rendering!")
+                render(App);
+            });
+        });
+    }
 }

@@ -1,6 +1,9 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-
+// react-hot-loader doesn't know how to patch:
+// import * as React from "react";
+// import * as ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import Loadable from "react-loadable";
 import {createLoadModuleFn} from "./module-loader.js";
 
 // Prevents entry points from rendering when loading entry bundles
@@ -8,8 +11,11 @@ import {createLoadModuleFn} from "./module-loader.js";
 // modules they contain and we don't actually want them to render
 // anything in this situation.
 window.__Sandbox__ = true;
+window.React = React;
+window.ReactDOM = ReactDOM;
 
-const container = document.createElement("div");
+const container = document.querySelector("#container") || document.createElement("div");
+container.id = "container";
 document.body.appendChild(container);
 
 // TODO: generate this list based on fixture tests
@@ -25,6 +31,7 @@ class Sandbox extends React.Component {
         this.state = {
             Component: null,
             loadModule: null,
+            index: 0,
         };
     }
 
@@ -34,21 +41,36 @@ class Sandbox extends React.Component {
             // export global for debugging purposes
             window.loadModule = loadModule;
         });
+
+        if (module.hot) {
+            module.hot.addStatusHandler(status => {
+                const {loadModule, index} = this.state;
+                // An "idle" status indicates that a hot update has been 
+                // successfully accept, let's try updating the current
+                // module.
+                if (status === "idle") {
+                    this.loadModuleAtIndex(index);
+                }
+            });
+        }
     }
 
     handleChange = (e) => {
         const index = e.currentTarget.selectedIndex;
+        this.loadModuleAtIndex(index);
+    }
+
+    loadModuleAtIndex(index) {
         const {loadModule} = this.state;
 
         if (index > 0 && !!loadModule) {
             const moduleId = modules[index - 1];
-            console.log(`loading ${moduleId}`);
             loadModule(moduleId).then(m => {
                 if (m.__esModule) {
-                    this.setState({Component: m.default});
+                    this.setState({Component: m.default, index});
                     console.log(`${moduleId} loaded`);
                 } else {
-                    this.setState({Component: m});
+                    this.setState({Component: m, index});
                     console.log(`${moduleId} loaded`);
                 }
             });
@@ -71,4 +93,6 @@ class Sandbox extends React.Component {
     }
 }
 
+// We don't need AppContainer for the Sandbox unless we want the Sandbox
+// code itself to be hot-loadable.
 ReactDOM.render(<Sandbox/>, container);

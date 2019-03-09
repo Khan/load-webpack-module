@@ -1,25 +1,30 @@
 import * as React from "react";
-import {hot} from "react-hot-loader/root.js";
+import Loadable from "react-loadable";
+
+const LoadableFoo = Loadable({
+    loader: () => import("./foo.js"),
+    loading() {
+        return <div>Loading...</div>
+    }
+});
+
+const LoadableBar = Loadable({
+    loader: () => import("./bar.js"),
+    loading() {
+        return <div>Loading...</div>
+    }
+});
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    componentDidMount() {
-        import("./foo.js").then(Foo => this.setState({Foo: Foo.default}));
-        import("./bar.js").then(Bar => this.setState({Bar: Bar.default}));
-    }
-
     render() {
-        const {Foo, Bar} = this.state;
         return <div>
             <h1>Hello, world</h1>
-            {Foo && <Foo/>}
-            {Bar && <Bar/>}
+            <LoadableFoo/>
+            <LoadableBar/>
         </div>;
     }
 }
 
-export default hot(App);
+export default App;
+
+if (module.hot && window.__Sandbox__) module.hot.accept();

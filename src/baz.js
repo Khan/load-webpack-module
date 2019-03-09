@@ -1,5 +1,4 @@
 import * as React from "react";
-import {hot} from "react-hot-loader/root.js";
 
 class Baz extends React.Component {
     render() {
@@ -14,4 +13,7 @@ class Baz extends React.Component {
     }
 }
 
-export default hot(Baz);
+export default Baz;
+
+// components that aren't directly rendered in the sandbox don't need
+// to self accept for hot-loading.
