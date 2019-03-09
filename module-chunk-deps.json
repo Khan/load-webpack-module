@@ -10,6 +10,7 @@
         "./node_modules/webpack/hot sync ^\\.\\/log$": "index~sandbox",
         "./src/module-loader.js": "sandbox",
         "./src/sandbox.js": "sandbox",
+        "./node_modules/react-hot-loader/root.js": "vendors~index",
         "./node_modules/ansi-html/index.js": "vendors~index~sandbox",
         "./node_modules/ansi-regex/index.js": "vendors~index~sandbox",
         "./node_modules/events/events.js": "vendors~index~sandbox",
@@ -174,12 +175,16 @@
         "index": [
             1,
             2,
+            "vendors~index",
             "vendors~index~sandbox"
         ],
         "vendors~index~sandbox": [
             "index~sandbox"
         ],
         "sandbox": [
+            "vendors~index~sandbox"
+        ],
+        "vendors~index": [
             "vendors~index~sandbox"
         ],
         "index~sandbox": [

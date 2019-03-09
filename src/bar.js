@@ -4,7 +4,7 @@ const Baz = require("./baz.js").default;
 class Bar extends React.Component {
     render() {
         return <Baz color="orange">
-            Bar!
+            Bar
         </Baz>;
     }
 }

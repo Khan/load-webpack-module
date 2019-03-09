@@ -1,5 +1,6 @@
 import * as React from "react";
 import Loadable from "react-loadable";
+import { hot } from "react-hot-loader/root.js";
 
 const LoadableFoo = Loadable({
     loader: () => import("./foo.js"),
@@ -25,6 +26,6 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default hot(App);
 
 if (module.hot && window.__Sandbox__) module.hot.accept();
