@@ -1,35 +1,15 @@
-// react-hot-loader doesn't know how to patch:
-// import * as React from "react";
-// import * as ReactDOM from "react-dom";
 import React from "react";
-import ReactDOM from "react-dom";
-import Loadable from "react-loadable";
+import { hot } from "react-hot-loader/root.js";
+
 import {createLoadModuleFn} from "./module-loader.js";
-
-// Prevents entry points from rendering when loading entry bundles
-// in the sandbox.  The sandbox loads bundles for access to the
-// modules they contain and we don't actually want them to render
-// anything in this situation.
-window.__Sandbox__ = true;
-window.React = React;
-window.ReactDOM = ReactDOM;
-
-const container = document.querySelector("#container") || document.createElement("div");
-container.id = "container";
-document.body.appendChild(container);
-
-// TODO: generate this list based on fixture tests
-const modules = [
-    "./src/app.js",
-    "./src/foo.js",
-    "./src/bar.js",
-];
+import fixtures from "./fixtures.js";
 
 class Sandbox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             Component: null,
+            fixture: null,
             loadModule: null,
             index: 0,
         };
@@ -62,23 +42,29 @@ class Sandbox extends React.Component {
 
     loadModuleAtIndex(index) {
         const {loadModule} = this.state;
+        const modules = Object.keys(fixtures);
 
         if (index > 0 && !!loadModule) {
             const moduleId = modules[index - 1];
-            loadModule(moduleId).then(m => {
-                if (m.__esModule) {
-                    this.setState({Component: m.default, index});
-                    console.log(`${moduleId} loaded`);
-                } else {
-                    this.setState({Component: m, index});
-                    console.log(`${moduleId} loaded`);
-                }
+            Promise.all([
+                loadModule(moduleId),
+                fixtures[moduleId](),
+            ]).then(([component, fixture]) => {
+                this.setState({
+                    Component: component.__esModule ? component.default : component,
+                    fixture: fixture.__esModule ? fixture.default : fixture,
+                    index,
+                });
+                console.log(`${moduleId} loaded`);
             });
+
         }
     }
 
     render() {
-        const {Component, loadModule} = this.state;
+        const {Component, fixture, loadModule, index} = this.state;
+        const modules = Object.keys(fixtures);
+
         return <div>
             <h1>Sandbox</h1>
             <select onChange={this.handleChange} disabled={!loadModule}>
@@ -87,12 +73,12 @@ class Sandbox extends React.Component {
                     <option key={m} value={m}>{m}</option>)}
             </select>
             <div>
-                {Component && <Component/>}
+                {Component && fixture && 
+                    fixture.instances.map((props, key) => 
+                        <Component key={key} {...props} />)}
             </div>
         </div>
     }
 }
 
-// We don't need AppContainer for the Sandbox unless we want the Sandbox
-// code itself to be hot-loadable.
-ReactDOM.render(<Sandbox/>, container);
+export default hot(Sandbox);

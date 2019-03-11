@@ -4,7 +4,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
-import App from "./app.js";
+import App from "./components/app.js";
 import Loadable from "react-loadable";
 
 window.Require = __webpack_require__;

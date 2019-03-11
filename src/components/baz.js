@@ -1,13 +1,10 @@
 import * as React from "react";
 
+import style from "./style.js";
+
 class Baz extends React.Component {
     render() {
-        const style = {
-            color: this.props.color, 
-            fontFamily: "sans-serif", 
-            fontSize: 32,
-        };
-        return <div style={style}>
+        return <div style={{...style, color: this.props.color}}>
             {this.props.children}
         </div>
     }

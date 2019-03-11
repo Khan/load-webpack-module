@@ -6,8 +6,8 @@ module.exports = {
     mode: "development",
     target: "web",
     entry: {
-        "index": "./src/index.js",
-        "sandbox": "./src/sandbox.js",
+        "index": "./src/app-entry.js",
+        "sandbox": "./src/sandbox-entry.js",
     },
     stats: {
         source: false,

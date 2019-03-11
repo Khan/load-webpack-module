@@ -2,15 +2,22 @@
     "chunkMap": {
         "0": "index",
         "1": "sandbox",
-        "./src/baz.js": 0,
-        "./src/bar.js": 1,
-        "./src/foo.js": 2,
-        "./src/app.js": "index",
-        "./src/index.js": "index",
+        "./src/components/baz.js": 0,
+        "./src/components/style.js": 0,
+        "./src/components/bar.js": 1,
+        "./src/components/foo.js": 2,
+        "./src/fixtures/app.fixture.js": "fixtures",
+        "./src/fixtures/bar.fixture.js": "fixtures",
+        "./src/fixtures/baz.fixture.js": "fixtures",
+        "./src/fixtures/foo.fixture.js": "fixtures",
+        "./src/app-entry.js": "index",
+        "./src/components/app.js": "index",
         "./node_modules/webpack/hot sync ^\\.\\/log$": "index~sandbox",
-        "./src/module-loader.js": "sandbox",
-        "./src/sandbox.js": "sandbox",
-        "./node_modules/react-hot-loader/root.js": "vendors~index",
+        "./src/sandbox-entry.js": "sandbox",
+        "./src/sandbox/fixtures.js": "sandbox",
+        "./src/sandbox/module-loader.js": "sandbox",
+        "./src/sandbox/sandbox.js": "sandbox",
+        "./node_modules/react-loadable/lib/index.js": "vendors~index",
         "./node_modules/ansi-html/index.js": "vendors~index~sandbox",
         "./node_modules/ansi-regex/index.js": "vendors~index~sandbox",
         "./node_modules/events/events.js": "vendors~index~sandbox",
@@ -133,10 +140,10 @@
         "./node_modules/react-hot-loader/dist/react-hot-loader.development.js": "vendors~index~sandbox",
         "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js": "vendors~index~sandbox",
         "./node_modules/react-hot-loader/index.js": "vendors~index~sandbox",
+        "./node_modules/react-hot-loader/root.js": "vendors~index~sandbox",
         "./node_modules/react-is/cjs/react-is.development.js": "vendors~index~sandbox",
         "./node_modules/react-is/index.js": "vendors~index~sandbox",
         "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js": "vendors~index~sandbox",
-        "./node_modules/react-loadable/lib/index.js": "vendors~index~sandbox",
         "./node_modules/react/cjs/react.development.js": "vendors~index~sandbox",
         "./node_modules/react/index.js": "vendors~index~sandbox",
         "./node_modules/scheduler/cjs/scheduler-tracing.development.js": "vendors~index~sandbox",
@@ -178,11 +185,12 @@
             "vendors~index",
             "vendors~index~sandbox"
         ],
+        "sandbox": [
+            "fixtures",
+            "vendors~index~sandbox"
+        ],
         "vendors~index~sandbox": [
             "index~sandbox"
-        ],
-        "sandbox": [
-            "vendors~index~sandbox"
         ],
         "vendors~index": [
             "vendors~index~sandbox"
