@@ -11,4 +11,4 @@ class Foo extends React.Component {
 
 export default Foo;
 
-if (module.hot && window.__Sandbox__) module.hot.accept();
+if (module.hot) module.hot.accept();

@@ -14,4 +14,4 @@ module.exports = Bar;
 // All components loaded directly by the sandbox need to self-accept
 // since they're loaded independently and don't have a parent to accept
 // for them.
-if (module.hot && window.__Sandbox__) module.hot.accept();
+if (module.hot) module.hot.accept();

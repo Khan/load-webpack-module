@@ -28,4 +28,4 @@ class App extends React.Component {
 
 export default hot(App);
 
-if (module.hot && window.__Sandbox__) module.hot.accept();
+if (module.hot) module.hot.accept();
