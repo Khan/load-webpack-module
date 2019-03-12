@@ -1,3 +1,5 @@
+import Baz from "../components/baz.js";
+
 module.exports = {
     instances: [
         {
@@ -6,5 +8,6 @@ module.exports = {
         {
             children: "testing one two",
         },
+        () => <Baz>direct instantiation test!</Baz>,
     ],
 };

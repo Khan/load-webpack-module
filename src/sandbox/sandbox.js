@@ -74,8 +74,17 @@ class Sandbox extends React.Component {
             </select>
             <div>
                 {Component && fixture && 
-                    fixture.instances.map((props, key) => 
-                        <Component key={key} {...props} />)}
+                    fixture.instances.map((props, index) => {
+                        if (typeof props === "function") {
+                            return <div key={index}>
+                                {props()}
+                            </div>;
+                        } else {
+                            return <div key={index}>
+                                <Component {...props} />
+                            </div>;
+                        }
+                    })}
             </div>
         </div>
     }

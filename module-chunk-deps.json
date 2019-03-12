@@ -4,12 +4,12 @@
         "1": "sandbox",
         "./src/components/baz.js": 0,
         "./src/components/style.js": 0,
-        "./src/components/bar.js": 1,
-        "./src/components/foo.js": 2,
-        "./src/fixtures/app.fixture.js": "fixtures",
-        "./src/fixtures/bar.fixture.js": "fixtures",
-        "./src/fixtures/baz.fixture.js": "fixtures",
-        "./src/fixtures/foo.fixture.js": "fixtures",
+        "./src/components/foo.js": 1,
+        "./src/components/bar.js": 2,
+        "./src/fixtures/baz.fixture.js": "fixtures-baz",
+        "./src/fixtures/app.fixture.js": "fixtures-common",
+        "./src/fixtures/bar.fixture.js": "fixtures-common",
+        "./src/fixtures/foo.fixture.js": "fixtures-foo",
         "./src/app-entry.js": "index",
         "./src/components/app.js": "index",
         "./node_modules/webpack/hot sync ^\\.\\/log$": "index~sandbox",
@@ -179,14 +179,22 @@
             0,
             "vendors~index~sandbox"
         ],
+        "fixtures-baz": [
+            0
+        ],
         "index": [
             1,
             2,
             "vendors~index",
             "vendors~index~sandbox"
         ],
+        "fixtures-foo": [
+            1
+        ],
         "sandbox": [
-            "fixtures",
+            "fixtures-baz",
+            "fixtures-common",
+            "fixtures-foo",
             "vendors~index~sandbox"
         ],
         "vendors~index~sandbox": [
