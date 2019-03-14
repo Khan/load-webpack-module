@@ -10,6 +10,7 @@
         "./src/fixtures/app.fixture.js": "fixtures-common",
         "./src/fixtures/bar.fixture.js": "fixtures-common",
         "./src/fixtures/foo.fixture.js": "fixtures-foo",
+        "./src/components/lazy.js": "fixtures-foo~index",
         "./src/app-entry.js": "index",
         "./src/components/app.js": "index",
         "./node_modules/webpack/hot sync ^\\.\\/log$": "index~sandbox",
@@ -17,7 +18,7 @@
         "./src/sandbox/fixtures.js": "sandbox",
         "./src/sandbox/module-loader.js": "sandbox",
         "./src/sandbox/sandbox.js": "sandbox",
-        "./node_modules/react-loadable/lib/index.js": "vendors~index",
+        "./node_modules/react-loadable/lib/index.js": "vendors~fixtures-foo~index",
         "./node_modules/ansi-html/index.js": "vendors~index~sandbox",
         "./node_modules/ansi-regex/index.js": "vendors~index~sandbox",
         "./node_modules/events/events.js": "vendors~index~sandbox",
@@ -173,6 +174,7 @@
         ],
         "1": [
             0,
+            "fixtures-foo~index",
             "vendors~index~sandbox"
         ],
         "2": [
@@ -185,7 +187,8 @@
         "index": [
             1,
             2,
-            "vendors~index",
+            "fixtures-foo~index",
+            "vendors~fixtures-foo~index",
             "vendors~index~sandbox"
         ],
         "fixtures-foo": [
@@ -200,7 +203,11 @@
         "vendors~index~sandbox": [
             "index~sandbox"
         ],
-        "vendors~index": [
+        "fixtures-foo~index": [
+            "vendors~fixtures-foo~index",
+            "vendors~index~sandbox"
+        ],
+        "vendors~fixtures-foo~index": [
             "vendors~index~sandbox"
         ],
         "index~sandbox": [

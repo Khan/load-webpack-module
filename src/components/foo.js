@@ -1,11 +1,20 @@
 import * as React from "react";
-import Baz from "./baz.js";
+
+import lazy from "./lazy.js";
+// import Baz from "./baz.js";
+
+const LoadableBaz = lazy({
+    loader: () => import("./baz.js"),
+    loading() {
+        return <div>Loading...</div>
+    }
+});
 
 class Foo extends React.Component {
     render() {
-        return <Baz color="plum">
+        return <LoadableBaz color="plum">
             Foo
-        </Baz>;
+        </LoadableBaz>;
     }
 }
 

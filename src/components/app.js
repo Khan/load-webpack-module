@@ -1,15 +1,16 @@
 import * as React from "react";
-import Loadable from "react-loadable";
 import { hot } from "react-hot-loader/root.js";
 
-const LoadableFoo = Loadable({
+import lazy from "./lazy.js";
+
+const LoadableFoo = lazy({
     loader: () => import("./foo.js"),
     loading() {
         return <div>Loading...</div>
     }
 });
 
-const LoadableBar = Loadable({
+const LoadableBar = lazy({
     loader: () => import("./bar.js"),
     loading() {
         return <div>Loading...</div>

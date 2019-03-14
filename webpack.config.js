@@ -46,7 +46,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Index',
-            chunks: ['runtime', 'vendors~index~sandbox', 'vendors~index', 'index~sandbox', 'index'],
+            chunks: ['runtime', 'vendors~index~sandbox', 'vendors~index', 'vendors~fixtures-foo~index', 'fixtures-foo~index', 'index~sandbox', 'index'],
             inject: 'body',
             filename: 'index.html'
         }),
