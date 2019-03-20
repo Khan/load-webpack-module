@@ -25,6 +25,9 @@ class ModuleChunkMapPlugin {
 
         compiler.hooks.done.tap(pluginName, stats => {
             if (!stats.hasErrors()) {
+                for (const module of stats.compilation.modules) {
+                    console.log(module.type);
+                }
                 
                 const chunkMap = {};
                 for (const chunk of stats.compilation.chunks) {
@@ -33,33 +36,58 @@ class ModuleChunkMapPlugin {
                     }
                 }
                 
-                const chunkDeps = {};
+                const moduleDeps = {};
                 for (const chunk of stats.compilation.chunks) {
                     for (const module of [...chunk._modules]) {
                         for (const reason of module.reasons) {
                             if (reason.module) {
-                                const reasonChunk = chunkMap[reason.module.id];
-                                const depChunk = chunkMap[module.id];
-
-                                if (reasonChunk !== depChunk) {
-                                    if (!(chunkDeps.hasOwnProperty(reasonChunk))) {
-                                        chunkDeps[reasonChunk] = new Set();
-                                    }
-                                    chunkDeps[reasonChunk].add(depChunk);
+                                // console.log(reason.module.type);
+                                
+                                if (!moduleDeps.hasOwnProperty(reason.module.id)) {
+                                    moduleDeps[reason.module.id] = new Set();
                                 }
+                                moduleDeps[reason.module.id].add(module.id);
                             }
                         }
                     }
                 }
+                
+                const output = {};
 
-                for (const [key, value] of Object.entries(chunkDeps)) {
-                    chunkDeps[key] = [...value];
+                const getChunksForModule = (moduleId) => {
+                    if (output.hasOwnProperty(moduleId)) {
+                        return output[moduleId];
+                    } else {
+                        const containingChunk = chunkMap[moduleId];
+                        const directModuleDeps = [...(moduleDeps[moduleId] || [])];
+                        // compute
+                        const chunkDeps = new Set();
+                        chunkDeps.add(containingChunk);
+                        for (const moduleDep of directModuleDeps) {
+                            for (const chunk of getChunksForModule(moduleDep)) {
+                                chunkDeps.add(chunk);
+                            }
+                        }
+                        // const allDeps = new Set(directModuleDeps.reduce((allDeps, modDepId) => {
+                            
+                        //     return [...allDeps, ...getChunksForModule(modDepId)];
+                        // }, [containingChunk]));
+                        // memoize
+                        output[moduleId] = [...chunkDeps];
+                        // return
+                        return output[moduleId];
+                    }
+                }
+
+                for (const moduleId of Object.keys(moduleDeps)) {
+                    getChunksForModule(moduleId);
                 }
                 
-                const output = {
-                    chunkMap,
-                    chunkDeps,
-                };
+
+                // for (const [key, deps] of Object.entries(moduleDeps)) {
+                //     const set = new Set([...deps].map(dep => chunkMap[dep]));
+                //     output[key] = [...set];
+                // }
 
                 fs.writeFileSync("./module-chunk-deps.json", JSON.stringify(output, null, 4));
             }

@@ -1,217 +1,167 @@
 {
-    "chunkMap": {
-        "0": "index",
-        "1": "sandbox",
-        "./src/components/baz.js": 0,
-        "./src/components/style.js": 0,
-        "./src/components/foo.js": 1,
-        "./src/components/bar.js": 2,
-        "./src/fixtures/baz.fixture.js": "fixtures-baz",
-        "./src/fixtures/app.fixture.js": "fixtures-common",
-        "./src/fixtures/bar.fixture.js": "fixtures-common",
-        "./src/fixtures/foo.fixture.js": "fixtures-foo",
-        "./src/components/lazy.js": "fixtures-foo~index",
-        "./src/app-entry.js": "index",
-        "./src/components/app.js": "index",
-        "./node_modules/webpack/hot sync ^\\.\\/log$": "index~sandbox",
-        "./src/sandbox-entry.js": "sandbox",
-        "./src/sandbox/fixtures.js": "sandbox",
-        "./src/sandbox/module-loader.js": "sandbox",
-        "./src/sandbox/sandbox.js": "sandbox",
-        "./node_modules/react-loadable/lib/index.js": "vendors~fixtures-foo~index",
-        "./node_modules/ansi-html/index.js": "vendors~index~sandbox",
-        "./node_modules/ansi-regex/index.js": "vendors~index~sandbox",
-        "./node_modules/events/events.js": "vendors~index~sandbox",
-        "./node_modules/fast-levenshtein/levenshtein.js": "vendors~index~sandbox",
-        "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js": "vendors~index~sandbox",
-        "./node_modules/html-entities/index.js": "vendors~index~sandbox",
-        "./node_modules/html-entities/lib/html4-entities.js": "vendors~index~sandbox",
-        "./node_modules/html-entities/lib/html5-entities.js": "vendors~index~sandbox",
-        "./node_modules/html-entities/lib/xml-entities.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_Hash.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_ListCache.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_Map.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_MapCache.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_Stack.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_Symbol.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_Uint8Array.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_apply.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_arrayLikeKeys.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_assignMergeValue.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_assignValue.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_assocIndexOf.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseAssignValue.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseCreate.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseFor.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseGetTag.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseIsArguments.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseIsNative.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseIsTypedArray.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseKeysIn.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseMerge.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseMergeDeep.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseRest.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseSetToString.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseTimes.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_baseUnary.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_cloneArrayBuffer.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_cloneBuffer.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_cloneTypedArray.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_copyArray.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_copyObject.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_coreJsData.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_createAssigner.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_createBaseFor.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_defineProperty.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_freeGlobal.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_getMapData.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_getNative.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_getPrototype.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_getRawTag.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_getValue.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_hashClear.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_hashDelete.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_hashGet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_hashHas.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_hashSet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_initCloneObject.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_isIndex.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_isIterateeCall.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_isKeyable.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_isMasked.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_isPrototype.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_listCacheClear.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_listCacheDelete.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_listCacheGet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_listCacheHas.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_listCacheSet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_mapCacheClear.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_mapCacheDelete.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_mapCacheGet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_mapCacheHas.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_mapCacheSet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_nativeCreate.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_nativeKeysIn.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_nodeUtil.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_objectToString.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_overArg.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_overRest.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_root.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_safeGet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_setToString.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_shortOut.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_stackClear.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_stackDelete.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_stackGet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_stackHas.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_stackSet.js": "vendors~index~sandbox",
-        "./node_modules/lodash/_toSource.js": "vendors~index~sandbox",
-        "./node_modules/lodash/constant.js": "vendors~index~sandbox",
-        "./node_modules/lodash/eq.js": "vendors~index~sandbox",
-        "./node_modules/lodash/identity.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isArguments.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isArray.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isArrayLike.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isArrayLikeObject.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isBuffer.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isFunction.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isLength.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isObject.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isObjectLike.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isPlainObject.js": "vendors~index~sandbox",
-        "./node_modules/lodash/isTypedArray.js": "vendors~index~sandbox",
-        "./node_modules/lodash/keysIn.js": "vendors~index~sandbox",
-        "./node_modules/lodash/merge.js": "vendors~index~sandbox",
-        "./node_modules/lodash/stubFalse.js": "vendors~index~sandbox",
-        "./node_modules/lodash/toPlainObject.js": "vendors~index~sandbox",
-        "./node_modules/loglevel/lib/loglevel.js": "vendors~index~sandbox",
-        "./node_modules/node-libs-browser/node_modules/punycode/punycode.js": "vendors~index~sandbox",
-        "./node_modules/object-assign/index.js": "vendors~index~sandbox",
-        "./node_modules/prop-types/checkPropTypes.js": "vendors~index~sandbox",
-        "./node_modules/prop-types/factoryWithTypeCheckers.js": "vendors~index~sandbox",
-        "./node_modules/prop-types/index.js": "vendors~index~sandbox",
-        "./node_modules/prop-types/lib/ReactPropTypesSecret.js": "vendors~index~sandbox",
-        "./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js": "vendors~index~sandbox",
-        "./node_modules/prop-types/node_modules/react-is/index.js": "vendors~index~sandbox",
-        "./node_modules/querystring-es3/decode.js": "vendors~index~sandbox",
-        "./node_modules/querystring-es3/encode.js": "vendors~index~sandbox",
-        "./node_modules/querystring-es3/index.js": "vendors~index~sandbox",
-        "./node_modules/react-dom/cjs/react-dom.development.js": "vendors~index~sandbox",
-        "./node_modules/react-dom/index.js": "vendors~index~sandbox",
-        "./node_modules/react-hot-loader/dist/react-hot-loader.development.js": "vendors~index~sandbox",
-        "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js": "vendors~index~sandbox",
-        "./node_modules/react-hot-loader/index.js": "vendors~index~sandbox",
-        "./node_modules/react-hot-loader/root.js": "vendors~index~sandbox",
-        "./node_modules/react-is/cjs/react-is.development.js": "vendors~index~sandbox",
-        "./node_modules/react-is/index.js": "vendors~index~sandbox",
-        "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js": "vendors~index~sandbox",
-        "./node_modules/react/cjs/react.development.js": "vendors~index~sandbox",
-        "./node_modules/react/index.js": "vendors~index~sandbox",
-        "./node_modules/scheduler/cjs/scheduler-tracing.development.js": "vendors~index~sandbox",
-        "./node_modules/scheduler/cjs/scheduler.development.js": "vendors~index~sandbox",
-        "./node_modules/scheduler/index.js": "vendors~index~sandbox",
-        "./node_modules/scheduler/tracing.js": "vendors~index~sandbox",
-        "./node_modules/shallowequal/index.js": "vendors~index~sandbox",
-        "./node_modules/sockjs-client/dist/sockjs.js": "vendors~index~sandbox",
-        "./node_modules/strip-ansi/index.js": "vendors~index~sandbox",
-        "./node_modules/url/url.js": "vendors~index~sandbox",
-        "./node_modules/url/util.js": "vendors~index~sandbox",
-        "./node_modules/webpack-dev-server/client/index.js?http://localhost:8080": "vendors~index~sandbox",
-        "./node_modules/webpack-dev-server/client/overlay.js": "vendors~index~sandbox",
-        "./node_modules/webpack-dev-server/client/socket.js": "vendors~index~sandbox",
-        "./node_modules/webpack/buildin/amd-define.js": "vendors~index~sandbox",
-        "./node_modules/webpack/buildin/amd-options.js": "vendors~index~sandbox",
-        "./node_modules/webpack/buildin/global.js": "vendors~index~sandbox",
-        "./node_modules/webpack/buildin/module.js": "vendors~index~sandbox",
-        "./node_modules/webpack/hot/dev-server.js": "vendors~index~sandbox",
-        "./node_modules/webpack/hot/emitter.js": "vendors~index~sandbox",
-        "./node_modules/webpack/hot/log-apply-result.js": "vendors~index~sandbox",
-        "./node_modules/webpack/hot/log.js": "vendors~index~sandbox"
-    },
-    "chunkDeps": {
-        "0": [
-            "vendors~index~sandbox"
-        ],
-        "1": [
-            0,
-            "fixtures-foo~index",
-            "vendors~index~sandbox"
-        ],
-        "2": [
-            0,
-            "vendors~index~sandbox"
-        ],
-        "fixtures-baz": [
-            0
-        ],
-        "index": [
-            1,
-            2,
-            "fixtures-foo~index",
-            "vendors~fixtures-foo~index",
-            "vendors~index~sandbox"
-        ],
-        "fixtures-foo": [
-            1
-        ],
-        "sandbox": [
-            "fixtures-baz",
-            "fixtures-common",
-            "fixtures-foo",
-            "vendors~index~sandbox"
-        ],
-        "vendors~index~sandbox": [
-            "index~sandbox"
-        ],
-        "fixtures-foo~index": [
-            "vendors~fixtures-foo~index",
-            "vendors~index~sandbox"
-        ],
-        "vendors~fixtures-foo~index": [
-            "vendors~index~sandbox"
-        ],
-        "index~sandbox": [
-            "vendors~index~sandbox"
-        ]
-    }
+    "./node_modules/object-assign/index.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/prop-types/lib/ReactPropTypesSecret.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/prop-types/checkPropTypes.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/react/cjs/react.development.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/react/index.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/react-hot-loader/index.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/webpack/buildin/module.js": [
+        "vendors~index~sandbox"
+    ],
+    "./src/components/style.js": [
+        0,
+        "vendors~index~sandbox"
+    ],
+    "./src/components/baz.js": [
+        0,
+        "vendors~index~sandbox"
+    ],
+    "./src/components/bar.js": [
+        2,
+        0,
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js": [
+        "vendors~fixtures-foo~index"
+    ],
+    "./node_modules/prop-types/node_modules/react-is/index.js": [
+        "vendors~fixtures-foo~index"
+    ],
+    "./node_modules/prop-types/factoryWithTypeCheckers.js": [
+        "vendors~fixtures-foo~index",
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/prop-types/index.js": [
+        "vendors~fixtures-foo~index",
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/react-loadable/lib/index.js": [
+        "vendors~fixtures-foo~index",
+        "vendors~index~sandbox"
+    ],
+    "./src/components/lazy.js": [
+        "fixtures-foo~index",
+        "vendors~fixtures-foo~index",
+        "vendors~index~sandbox"
+    ],
+    "./src/components/foo.js": [
+        1,
+        0,
+        "vendors~index~sandbox",
+        "fixtures-foo~index",
+        "vendors~fixtures-foo~index"
+    ],
+    "./src/fixtures/baz.fixture.js": [
+        "fixtures-baz",
+        0,
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/react-hot-loader/root.js": [
+        "vendors~index~sandbox"
+    ],
+    "./src/components/app.js": [
+        "index",
+        1,
+        0,
+        "vendors~index~sandbox",
+        "fixtures-foo~index",
+        "vendors~fixtures-foo~index",
+        2
+    ],
+    "./src/fixtures/foo.fixture.js": [
+        "fixtures-foo",
+        1,
+        0,
+        "vendors~index~sandbox",
+        "fixtures-foo~index",
+        "vendors~fixtures-foo~index"
+    ],
+    "./src/fixtures/app.fixture.js": [
+        "fixtures-common"
+    ],
+    "./src/fixtures/bar.fixture.js": [
+        "fixtures-common"
+    ],
+    "./src/sandbox/fixtures.js": [
+        "sandbox",
+        "fixtures-baz",
+        0,
+        "vendors~index~sandbox",
+        "fixtures-common",
+        "fixtures-foo",
+        1,
+        "fixtures-foo~index",
+        "vendors~fixtures-foo~index"
+    ],
+    "./node_modules/webpack/buildin/global.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/scheduler/cjs/scheduler.development.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/scheduler/index.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/scheduler/cjs/scheduler-tracing.development.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/scheduler/tracing.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/react-dom/cjs/react-dom.development.js": [
+        "vendors~index~sandbox"
+    ],
+    "./node_modules/react-dom/index.js": [
+        "vendors~index~sandbox"
+    ],
+    "./src/app-entry.js": [
+        "index",
+        1,
+        0,
+        "vendors~index~sandbox",
+        "fixtures-foo~index",
+        "vendors~fixtures-foo~index",
+        2
+    ],
+    "./src/sandbox/module-loader.js": [
+        "sandbox",
+        "vendors~index~sandbox"
+    ],
+    "./src/sandbox/sandbox.js": [
+        "sandbox",
+        "fixtures-baz",
+        0,
+        "vendors~index~sandbox",
+        "fixtures-common",
+        "fixtures-foo",
+        1,
+        "fixtures-foo~index",
+        "vendors~fixtures-foo~index"
+    ],
+    "./src/sandbox-entry.js": [
+        "sandbox",
+        "fixtures-baz",
+        0,
+        "vendors~index~sandbox",
+        "fixtures-common",
+        "fixtures-foo",
+        1,
+        "fixtures-foo~index",
+        "vendors~fixtures-foo~index"
+    ]
 }
