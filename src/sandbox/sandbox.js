@@ -16,7 +16,7 @@ class Sandbox extends React.Component {
     }
 
     componentDidMount() {
-        createLoadModuleFn("/module-chunk-deps.json").then(loadModule => {
+        createLoadModuleFn("/dist/module-chunk-deps.json").then(loadModule => {
             this.setState({loadModule});
             // export global for debugging purposes
             window.loadModule = loadModule;

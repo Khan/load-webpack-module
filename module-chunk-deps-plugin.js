@@ -23,46 +23,68 @@ class ModuleChunkMapPlugin {
             isWatching = true;
         });
 
-        compiler.hooks.done.tap(pluginName, stats => {
-            if (!stats.hasErrors()) {
-                
-                const chunkMap = {};
-                for (const chunk of stats.compilation.chunks) {
-                    for (const module of [...chunk._modules]) {
-                        chunkMap[module.id] = chunk.id;
-                    }
+        compiler.hooks.emit.tap(pluginName, compilation => {
+            const chunkMap = {};
+            for (const chunk of compilation.chunks) {
+                for (const module of [...chunk._modules]) {
+                    chunkMap[module.id] = chunk.id;
                 }
-                
-                const chunkDeps = {};
-                for (const chunk of stats.compilation.chunks) {
-                    for (const module of [...chunk._modules]) {
-                        for (const reason of module.reasons) {
-                            if (reason.module) {
-                                const reasonChunk = chunkMap[reason.module.id];
-                                const depChunk = chunkMap[module.id];
-
-                                if (reasonChunk !== depChunk) {
-                                    if (!(chunkDeps.hasOwnProperty(reasonChunk))) {
-                                        chunkDeps[reasonChunk] = new Set();
-                                    }
-                                    chunkDeps[reasonChunk].add(depChunk);
-                                }
+            }
+            
+            const moduleDeps = {};
+            for (const chunk of compilation.chunks) {
+                for (const module of [...chunk._modules]) {
+                    for (const reason of module.reasons) {
+                        if (reason.module) {
+                            // console.log(reason.module.type);
+                            
+                            if (!moduleDeps.hasOwnProperty(reason.module.id)) {
+                                moduleDeps[reason.module.id] = new Set();
                             }
+                            moduleDeps[reason.module.id].add(module.id);
                         }
                     }
                 }
-
-                for (const [key, value] of Object.entries(chunkDeps)) {
-                    chunkDeps[key] = [...value];
-                }
-                
-                const output = {
-                    chunkMap,
-                    chunkDeps,
-                };
-
-                fs.writeFileSync("./module-chunk-deps.json", JSON.stringify(output, null, 4));
             }
+            
+            const output = {};
+
+            const getChunksForModule = (moduleId) => {
+                if (output.hasOwnProperty(moduleId)) {
+                    return output[moduleId];
+                } else {
+                    const containingChunk = chunkMap[moduleId];
+                    const directModuleDeps = [...(moduleDeps[moduleId] || [])];
+                    const chunkDeps = new Set();
+
+                    // compute
+                    chunkDeps.add(containingChunk);
+                    for (const moduleDep of directModuleDeps) {
+                        for (const chunk of getChunksForModule(moduleDep)) {
+                            chunkDeps.add(chunk);
+                        }
+                    }
+
+                    // memoize
+                    output[moduleId] = [...chunkDeps];
+
+                    // return
+                    return output[moduleId];
+                }
+            }
+
+            for (const moduleId of Object.keys(moduleDeps)) {
+                getChunksForModule(moduleId);
+            }
+
+            const json = JSON.stringify(output, null, 4);
+            
+            compilation.assets["module-chunk-deps.json"] = {
+				source: () => json,
+				size: () => json.length
+			};
+
+            fs.writeFileSync("./module-chunk-deps.json", json);
         });
     }
 }
